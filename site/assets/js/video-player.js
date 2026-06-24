@@ -141,6 +141,19 @@
       mute:    'techops-mute',
       error:   'techops-error'
     });
+
+    initPlayer({
+      player:  'gfe-division-player',
+      video:   'gfe-division-video',
+      bigPlay: 'gfe-division-big-play',
+      pp:      'gfe-division-pp',
+      controls:'gfe-division-controls',
+      scrubber:'gfe-division-scrubber',
+      fill:    'gfe-division-fill',
+      time:    'gfe-division-time',
+      mute:    'gfe-division-mute',
+      error:   'gfe-division-error'
+    });
   });
 
 }());
