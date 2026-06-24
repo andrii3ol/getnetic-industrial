@@ -1281,3 +1281,243 @@ textarea.form-control {
 .video-facade:hover .video-facade-label {
   color: rgba(255, 255, 255, 0.7);
 }
+
+/* ============================================================
+   19. Custom HTML5 Video Player — .gtn-player
+   ============================================================ */
+
+.gtn-player {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: 2px;
+  background-color: var(--dark-4);
+  cursor: pointer;
+  user-select: none;
+}
+
+.gtn-player__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Subtle dark veil when paused — helps play button read against bright posters */
+.gtn-player::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.30);
+  pointer-events: none;
+  z-index: 1;
+  opacity: 1;
+  transition: opacity 0.35s ease;
+}
+
+.gtn-player.is-playing::before {
+  opacity: 0;
+}
+
+/* ---- Big centered play button ---- */
+.gtn-player__big-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: opacity 0.25s ease, border-color 0.2s ease,
+              background-color 0.2s ease, transform 0.2s ease;
+  z-index: 10;
+  outline: none;
+}
+
+.gtn-player__big-play svg {
+  width: 30px;
+  height: 30px;
+  margin-left: 4px;
+  pointer-events: none;
+}
+
+.gtn-player__big-play:hover,
+.gtn-player__big-play:focus-visible {
+  border-color: var(--accent);
+  background-color: var(--accent);
+  color: #000;
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.gtn-player__big-play:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.gtn-player.is-playing .gtn-player__big-play {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---- Controls bar ---- */
+.gtn-player__controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px 13px;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.75) 0%, transparent 100%);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 10;
+}
+
+.gtn-player:hover .gtn-player__controls,
+.gtn-player.is-paused .gtn-player__controls,
+.gtn-player:focus-within .gtn-player__controls {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---- Control buttons ---- */
+.gtn-player__btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: none;
+  border: none;
+  border-radius: 2px;
+  color: rgba(255, 255, 255, 0.55);
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s ease;
+  outline: none;
+}
+
+.gtn-player__btn:hover,
+.gtn-player__btn:focus-visible {
+  color: var(--accent);
+}
+
+.gtn-player__btn:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.gtn-player__btn svg {
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+}
+
+/* ---- Progress scrubber ---- */
+.gtn-player__scrubber {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px 0;
+  outline: none;
+}
+
+.gtn-player__scrubber:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.gtn-player__track {
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 2px;
+  position: relative;
+  transition: height 0.15s ease;
+}
+
+.gtn-player__scrubber:hover .gtn-player__track {
+  height: 3px;
+}
+
+.gtn-player__fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.1s linear;
+  pointer-events: none;
+}
+
+/* ---- Time display ---- */
+.gtn-player__time {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.38);
+  white-space: nowrap;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+/* ---- Error fallback ---- */
+.gtn-player__error {
+  display: none;
+  position: absolute;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  background: var(--dark-4);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  z-index: 20;
+}
+
+.gtn-player__error a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.gtn-player__error a:hover {
+  text-decoration: underline;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 576px) {
+  .gtn-player__time {
+    display: none;
+  }
+
+  .gtn-player__big-play {
+    width: 56px;
+    height: 56px;
+  }
+
+  .gtn-player__big-play svg {
+    width: 24px;
+    height: 24px;
+    margin-left: 3px;
+  }
+
+  .gtn-player__controls {
+    gap: 8px;
+    padding: 8px 10px 10px;
+  }
+}
