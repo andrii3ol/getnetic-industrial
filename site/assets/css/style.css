@@ -1,0 +1,1229 @@
+/* ============================================================
+   GETNETIC INDUSTRIAL — DESIGN SYSTEM
+   Hybrid: Cinematic Industrial-Tech 70% + Premium Tech 30%
+   ============================================================ */
+
+
+/* ============================================================
+   1. VARIABLES
+   ============================================================ */
+:root {
+  --dark-1:        #080B0F;
+  --dark-2:        #0D1219;
+  --dark-3:        #111820;
+  --dark-4:        #0A0D14;
+  --text-primary:  #EDEDEC;
+  --text-secondary:#5A6472;
+  --text-divider:  #1E2530;
+  --accent:        #E8891C;
+  --accent-dim:    rgba(232, 137, 28, 0.15);
+
+  --font-display:  'Barlow', sans-serif;
+  --font-mono:     'IBM Plex Mono', monospace;
+
+  --nav-height:    76px;
+  --container-max: 1240px;
+  --container-pad: 48px;
+
+  --section-pad-v: 120px;
+  --ease-out:      cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+/* ============================================================
+   2. RESET & BASE
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: var(--nav-height);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--dark-1);
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 16px;
+  line-height: 1.6;
+  font-weight: 300;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+
+/* ============================================================
+   3. TYPOGRAPHY
+   ============================================================ */
+
+/* Display sizes */
+.display-xl {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 8vw, 112px);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.display-l {
+  font-family: var(--font-display);
+  font-size: clamp(38px, 4.5vw, 60px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
+
+.display-m {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.2vw, 28px);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--text-primary);
+}
+
+/* Section label — the monospace thread through the page */
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+/* Body text */
+.body-text {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--text-secondary);
+}
+
+/* Mono micro — status bar, annotations */
+.mono-micro {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+
+/* ============================================================
+   4. LAYOUT
+   ============================================================ */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+}
+
+.section {
+  padding: var(--section-pad-v) 0;
+}
+
+
+/* ============================================================
+   5. BUTTONS
+   ============================================================ */
+.btn-primary,
+a.btn-primary,
+button.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--accent);
+  color: #000 !important;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 16px 32px;
+  border-radius: 2px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.15s ease;
+  text-decoration: none;
+}
+
+a.btn-primary,
+button.btn-primary {
+  background-color: var(--accent) !important;
+}
+
+.btn-primary:hover,
+a.btn-primary:hover,
+button.btn-primary:hover {
+  background-color: #f09930 !important;
+  transform: translateY(-1px);
+  color: #000 !important;
+}
+
+.btn-primary:active,
+button.btn-primary:active {
+  transform: translateY(0);
+}
+
+.link-amber {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  transition: gap 0.2s ease;
+}
+
+.link-amber:hover {
+  gap: 10px;
+  color: var(--accent);
+}
+
+
+/* ============================================================
+   6. NAVIGATION
+   ============================================================ */
+.site-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: var(--nav-height);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.site-nav.is-sticky {
+  background-color: rgba(8, 11, 15, 0.96);
+  border-bottom-color: var(--text-divider);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.nav-container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo img {
+  height: 28px;
+  width: auto;
+  display: block;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+.nav-links li a {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+}
+
+.nav-links li a:hover {
+  color: var(--text-primary);
+}
+
+.nav-links li.nav-cta a {
+  color: var(--accent);
+}
+
+.nav-links li.nav-cta a:hover {
+  color: #f09930;
+}
+
+/* Hamburger */
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background-color: var(--text-primary);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-hamburger.active span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+.nav-hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+.nav-hamburger.active span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+
+/* ============================================================
+   7. HERO
+   ============================================================ */
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+  background-color: var(--dark-1);
+  background-image: url('../images/hero-bg.jpg');
+  background-size: cover;
+  background-position: center center;
+}
+
+/* Gradient overlay — dark left (text zone), lighter right (image zone) */
+.hero-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(5, 8, 12, 0.90) 0%,
+    rgba(5, 8, 12, 0.78) 35%,
+    rgba(5, 8, 12, 0.50) 60%,
+    rgba(5, 8, 12, 0.30) 100%
+  );
+  z-index: 1;
+}
+
+/* Bottom fade to next section */
+.hero-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 180px;
+  background: linear-gradient(to bottom, transparent, var(--dark-2));
+  z-index: 2;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 3;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+  padding-bottom: 100px;
+  padding-top: var(--nav-height);
+  width: 100%;
+}
+
+.hero-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 28px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.hero-meta::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background-color: var(--text-divider);
+  flex-shrink: 0;
+}
+
+.hero-headline {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 7.5vw, 108px);
+  font-weight: 800;
+  line-height: 1.0;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin-bottom: 32px;
+  max-width: 750px;
+}
+
+.hero-sub {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--text-secondary);
+  max-width: 460px;
+  margin-bottom: 44px;
+}
+
+/* Hero animation sequence */
+.hero-meta {
+  opacity: 0;
+  animation: heroFadeUp 0.7s var(--ease-out) 0.3s forwards;
+}
+
+.hero-headline {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: heroFadeUp 0.9s var(--ease-out) 0.6s forwards;
+}
+
+.hero-sub {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeUp 0.8s var(--ease-out) 1.0s forwards;
+}
+
+.hero-cta-wrap {
+  opacity: 0;
+  animation: heroFadeUp 0.7s var(--ease-out) 1.3s forwards;
+}
+
+@keyframes heroFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Status bar */
+.hero-status {
+  position: absolute;
+  bottom: 32px;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  opacity: 0;
+  animation: heroFadeUp 0.7s ease 1.8s forwards;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  flex-shrink: 0;
+  animation: pulse 2.5s ease 2.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+
+.hero-status span {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+}
+
+.status-sep {
+  color: var(--text-divider) !important;
+}
+
+/* Scroll hint */
+.hero-scroll {
+  position: absolute;
+  bottom: 36px;
+  right: var(--container-pad);
+  z-index: 3;
+  font-family: var(--font-mono);
+  font-size: 16px;
+  color: var(--text-secondary);
+  opacity: 0;
+  animation: heroFadeUp 0.5s ease 2.2s forwards;
+  animation-name: scrollBounce;
+}
+
+@keyframes scrollBounce {
+  0%   { opacity: 0; transform: translateY(-4px); }
+  50%  { opacity: 1; transform: translateY(0); }
+  75%  { opacity: 1; transform: translateY(4px); }
+  100% { opacity: 0.5; transform: translateY(0); }
+}
+
+
+/* ============================================================
+   8. SHARED SECTION ELEMENTS
+   ============================================================ */
+.section-heading {
+  font-family: var(--font-display);
+  font-size: clamp(34px, 3.8vw, 52px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin-bottom: 48px;
+}
+
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background-color: var(--text-divider);
+  margin-bottom: 64px;
+}
+
+
+/* ============================================================
+   9. SERVICES SECTION
+   ============================================================ */
+.services-section {
+  background-color: var(--dark-2);
+  padding: 0;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: 56fr 44fr;
+  align-items: stretch;
+  min-height: 680px;
+}
+
+/* Left column: align content with global container, pad right internally */
+.services-content {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  padding-right: 80px;
+  padding-left: max(var(--container-pad), calc((100vw - var(--container-max)) / 2 + var(--container-pad)));
+}
+
+.services-content .section-heading {
+  margin-bottom: 0;
+}
+
+.services-list {
+  margin-top: 0;
+}
+
+.service-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--text-divider);
+  transition: border-color 0.2s ease;
+}
+
+.service-item:first-child {
+  border-top: 1px solid var(--text-divider);
+}
+
+.service-number {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  padding-top: 4px;
+  flex-shrink: 0;
+  min-width: 24px;
+}
+
+.service-info h3 {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin-bottom: 6px;
+}
+
+.service-info p {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+
+.services-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.services-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: brightness(0.35) saturate(0.6);
+  transition: filter 0.4s ease;
+}
+
+.services-image:hover img {
+  filter: brightness(0.42) saturate(0.7);
+}
+
+
+/* ============================================================
+   10. INDUSTRIES SECTION
+   ============================================================ */
+.industries-section {
+  background-color: var(--dark-1);
+}
+
+.industries-list {
+  margin-top: 16px;
+}
+
+.industry-item {
+  font-family: var(--font-display);
+  font-size: clamp(42px, 5.5vw, 72px);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  padding: 22px 0;
+  border-bottom: 1px solid var(--text-divider);
+  cursor: default;
+  transition: color 0.18s ease;
+}
+
+.industry-item:first-child {
+  border-top: 1px solid var(--text-divider);
+}
+
+.industry-item:hover {
+  color: var(--accent);
+}
+
+
+/* ============================================================
+   11. PROCESS SECTION
+   ============================================================ */
+.process-section {
+  background-color: var(--dark-4);
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 16px;
+}
+
+.process-divider {
+  grid-column: 1 / -1;
+  height: 1px;
+  background-color: var(--text-divider);
+  margin-bottom: 40px;
+}
+
+.process-step {
+  padding: 0 40px 0 0;
+  border-right: 1px solid var(--text-divider);
+}
+
+.process-step:last-child {
+  padding-right: 0;
+  border-right: none;
+}
+
+.process-step + .process-step {
+  padding-left: 40px;
+}
+
+.process-number {
+  font-family: var(--font-mono);
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.process-step h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.process-step p {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+
+/* ============================================================
+   12. GFE CREDIBILITY SECTION
+   ============================================================ */
+.about-section {
+  background-color: var(--dark-1);
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.about-content .section-heading {
+  margin-bottom: 24px;
+}
+
+.about-content p {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin-bottom: 36px;
+  max-width: 420px;
+}
+
+.about-image {
+  position: relative;
+  border-radius: 2px;
+  overflow: hidden;
+  aspect-ratio: 4 / 5;
+}
+
+.about-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  filter: brightness(0.6) saturate(0.7);
+}
+
+
+/* ============================================================
+   13. CONTACT / DEPLOYMENT REQUEST SECTION
+   ============================================================ */
+.contact-section {
+  background-color: var(--dark-3);
+  position: relative;
+}
+
+/* Amber activation bar */
+.contact-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background-color: var(--accent);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: start;
+}
+
+.contact-message .section-heading {
+  font-size: clamp(42px, 5vw, 68px);
+  font-weight: 800;
+  margin-bottom: 24px;
+}
+
+.contact-message > p {
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  max-width: 380px;
+  margin-bottom: 40px;
+}
+
+.contact-tagline {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-divider);
+}
+
+/* Form */
+.contact-form-wrap {
+  padding-top: 8px;
+}
+
+.form-group {
+  margin-bottom: 28px;
+}
+
+.form-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.form-control {
+  width: 100%;
+  background-color: #0B0E14;
+  border: 1px solid var(--text-divider);
+  border-radius: 2px;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 300;
+  padding: 14px 16px;
+  outline: none;
+  transition: border-color 0.2s ease;
+  -webkit-appearance: none;
+}
+
+.form-control:focus {
+  border-color: var(--accent);
+}
+
+.form-control::placeholder {
+  color: var(--text-divider);
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
+#msgSubmit {
+  margin-top: 16px;
+  font-family: var(--font-mono) !important;
+  font-size: 12px !important;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* Override Bootstrap/animate.css classes from contact-form-script.js */
+#msgSubmit.text-success,
+#msgSubmit.h4.text-success {
+  color: var(--accent) !important;
+}
+
+#msgSubmit.text-danger,
+#msgSubmit.h4.text-danger {
+  color: #e05c3a !important;
+}
+
+#msgSubmit.h4 {
+  font-size: 12px !important;
+  font-weight: 400 !important;
+  font-family: var(--font-mono) !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+
+/* ============================================================
+   14. FOOTER
+   ============================================================ */
+.site-footer {
+  background-color: var(--dark-1);
+  border-top: 1px solid var(--text-divider);
+  padding: 48px 0;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer-logo img {
+  height: 22px;
+  width: auto;
+  opacity: 0.6;
+}
+
+.footer-tagline {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-divider);
+  margin-top: 8px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--text-primary);
+}
+
+.footer-copy {
+  width: 100%;
+  padding-top: 24px;
+  border-top: 1px solid var(--text-divider);
+  margin-top: 24px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-divider);
+}
+
+
+/* ============================================================
+   15. GO TOP
+   ============================================================ */
+.go-top {
+  position: fixed;
+  bottom: 32px;
+  right: 32px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--dark-3);
+  border: 1px solid var(--text-divider);
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.3s ease, transform 0.3s ease, background-color 0.2s ease;
+  z-index: 500;
+  color: var(--text-secondary);
+  font-size: 16px;
+}
+
+.go-top.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.go-top:hover {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: #000;
+}
+
+
+/* ============================================================
+   16. WOW.js ANIMATION OVERRIDES
+   ============================================================ */
+.wow {
+  visibility: hidden;
+}
+
+
+/* ============================================================
+   17. RESPONSIVE
+   ============================================================ */
+@media (max-width: 1024px) {
+  :root {
+    --container-pad: 36px;
+    --section-pad-v: 96px;
+  }
+
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services-content {
+    padding-top: 80px;
+    padding-bottom: 60px;
+    padding-right: var(--container-pad);
+  }
+
+  .services-image {
+    height: 380px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+  }
+
+  .contact-grid {
+    gap: 64px;
+  }
+
+  .process-step {
+    padding: 0 24px 0 0;
+  }
+  .process-step + .process-step {
+    padding-left: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --container-pad: 24px;
+    --section-pad-v: 72px;
+    --nav-height: 64px;
+  }
+
+  /* Nav mobile */
+  .nav-links {
+    display: none;
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    right: 0;
+    background-color: rgba(8, 11, 15, 0.98);
+    border-bottom: 1px solid var(--text-divider);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 24px;
+    gap: 28px;
+    backdrop-filter: blur(10px);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li a {
+    font-size: 13px;
+  }
+
+  .nav-hamburger {
+    display: flex;
+  }
+
+  /* Hero */
+  .hero-section {
+    background-position: 70% center;
+  }
+
+  .hero-section::before {
+    background: rgba(5, 8, 12, 0.82);
+  }
+
+  .hero-headline {
+    font-size: clamp(38px, 10vw, 60px);
+  }
+
+  .hero-status {
+    display: none;
+  }
+
+  .hero-scroll {
+    display: none;
+  }
+
+  /* Services */
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .services-content {
+    padding-top: 60px;
+    padding-bottom: 60px;
+    padding-right: var(--container-pad);
+  }
+
+  .services-image {
+    height: 280px;
+  }
+
+  /* Industries */
+  .industry-item {
+    font-size: clamp(32px, 8.5vw, 48px);
+    padding: 18px 0;
+  }
+
+  /* Process */
+  .process-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .process-step {
+    padding: 32px 20px 32px 0;
+    border-right: none;
+    border-bottom: 1px solid var(--text-divider);
+  }
+
+  .process-step:last-child {
+    border-bottom: none;
+  }
+
+  .process-step + .process-step {
+    padding-left: 20px;
+    padding-right: 0;
+    border-left: 1px solid var(--text-divider);
+  }
+
+  .process-divider {
+    grid-column: 1 / -1;
+  }
+
+  /* About */
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .about-image {
+    aspect-ratio: 16 / 9;
+  }
+
+  /* Contact */
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+
+  .contact-message .section-heading {
+    font-size: clamp(40px, 10vw, 56px);
+  }
+
+  /* Footer */
+  .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .process-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .process-step,
+  .process-step + .process-step {
+    padding: 28px 0;
+    border-right: none;
+    border-left: none;
+    border-bottom: 1px solid var(--text-divider);
+  }
+
+  .process-step:last-child {
+    border-bottom: none;
+  }
+
+  .industry-item {
+    font-size: 32px;
+  }
+}
+
+
+/* ============================================================
+   18. VIDEO SECTIONS
+   ============================================================ */
+
+/* 16:9 responsive wrapper — works for both video blocks */
+.video-embed-wrap {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  border-radius: 2px;
+  background-color: var(--dark-4);
+}
+
+.video-embed-wrap iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* TechOps standalone section */
+.video-section {
+  background-color: var(--dark-2);
+}
+
+.video-section-sub {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 300;
+  line-height: 1.75;
+  color: var(--text-secondary);
+  margin-bottom: 40px;
+  max-width: 500px;
+}
+
+/* GFE Division video inside About section */
+.about-video {
+  margin-top: 80px;
+  padding-top: 64px;
+  border-top: 1px solid var(--text-divider);
+}
+
+.about-video-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
