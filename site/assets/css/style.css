@@ -601,14 +601,14 @@ button.btn-primary:active {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: right center;
   display: block;
-  filter: brightness(0.35) saturate(0.6);
+  filter: brightness(0.40) saturate(0.65);
   transition: filter 0.4s ease;
 }
 
 .services-image:hover img {
-  filter: brightness(0.42) saturate(0.7);
+  filter: brightness(0.50) saturate(0.75);
 }
 
 
