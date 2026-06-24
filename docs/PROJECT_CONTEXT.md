@@ -114,3 +114,24 @@ Focus on:
 Present a compelling vision of a standalone industrial-tech service offering.
 
 The MVP is intended to validate positioning, visual direction, and messaging before collecting final content and production assets.
+
+---
+
+## Repository and Deployment
+
+Repository: https://github.com/andrii3ol/getnetic-industrial
+
+Live URL: https://andrii3ol.github.io/getnetic-industrial/
+
+Branch structure:
+
+```
+main          ← active development (Claude works here)
+  ↓
+stable        ← approved / QA validated
+  ↓
+production    ← public live website (GitHub Pages deploys from here)
+```
+
+See `docs/GIT_WORKFLOW.md` for full branch workflow and release process.
+See `README_DEPLOYMENT.md` for deployment quick reference.

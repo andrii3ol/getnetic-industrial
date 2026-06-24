@@ -4,24 +4,20 @@
 
 The existing getnetic.com website is live and should not be replaced during MVP development.
 
-The new version should be developed separately and only replace the current website after stakeholder approval.
+The MVP is live at:
+https://andrii3ol.github.io/getnetic-industrial/
 
-## Preferred Staging Options
+Deployed via GitHub Pages from the `production` branch of:
+https://github.com/andrii3ol/getnetic-industrial
 
-Option 1:
-new.getnetic.com
+## Preferred Final Domain
 
-Option 2:
-getnetic.com/new
-
-Preferred:
 new.getnetic.com
 
 Reason:
 - Cleaner staging environment
-- Easier to present
-- Easier to keep separate from current live site
-- Safer for testing
+- Easier to present to stakeholders
+- Safer for testing before replacing getnetic.com
 
 ## Deployment Rules
 
